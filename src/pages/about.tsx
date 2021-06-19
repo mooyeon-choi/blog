@@ -1,13 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import IPage from "../interfaces/page";
 import logging from "../config/logging";
+import { Link, RouteComponentProps } from "react-router-dom";
 
-const AboutPage: React.FunctionComponent<IPage> = props => {
+const AboutPage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
+    const [message, setMessage] = useState<string>('');
+    
     useEffect(() => {
         logging.info(`Loding ${props.name}`);
-    }, [props.name])
 
-    return <div>This is the ABOUT page!</div>
+        let number = props.match.params.number;
+
+        if (number) 
+        {
+            setMessage(`The Number is ${number}`);
+        } 
+        else 
+        {
+            setMessage(`No number probided!`)
+        }
+    }, [props])
+
+    return (
+        <div>
+            <p>{message}</p>
+            <Link to="/">Go to the home page!</Link>
+        </div>
+    )
 }
 
 export default AboutPage;
