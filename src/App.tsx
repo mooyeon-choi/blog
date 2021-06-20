@@ -11,7 +11,7 @@ const App: React.FunctionComponent<{}> = props => {
   }, []);
 
   return (
-    <div>
+    <div id="app">
       <BrowserRouter>
         <Switch>
           {routes.map((route, index) => {

@@ -1,12 +1,12 @@
 import * as PIXI from "pixi.js";
-import { Visual } from "./visual";
+import { Visual } from "./visual.js";
 
-class KineticTypographyApp1 {
+class KineticTypographyApp2 {
   constructor() {
     this.setWebgl();
 
     const WebFont = require('webfontloader');
-
+    
     WebFont.load({
       google: {
         families: ["Hind:700"],
@@ -19,7 +19,7 @@ class KineticTypographyApp1 {
 
         requestAnimationFrame(this.animate.bind(this));
       },
-    })
+    });
   }
 
   setWebgl() {
@@ -36,40 +36,6 @@ class KineticTypographyApp1 {
     document.body.appendChild(this.renderer.view);
 
     this.stage = new PIXI.Container();
-
-    const blurFilter = new PIXI.filters.BlurFilter();
-    blurFilter.blur = 10;
-    blurFilter.autoFit = true;
-
-    const fragSource = `
-      precision mediump float;
-      varying vec2 vTextureCoord;
-      uniform sampler2D uSampler;
-      uniform float threshold;
-      uniform float mr;
-      uniform float mg;
-      uniform float mb;
-      void main(void) {
-        vec4 color = texture2D(uSampler, vTextureCoord);
-        vec3 mcolor = vec3(mr, mg, mb);
-        if (color.a > threshold) {
-          gl_FragColor = vec4(mcolor, 1.0);
-        } else {
-          gl_FragColor = vec4(vec3(0.0), 0.0);
-        }
-      }
-    `;
-
-    const uniformsData = {
-      threshold: 0.5,
-      mr: 0,
-      mg: 0,
-      mb: 0,
-    };
-
-    const thresholdFilter = new PIXI.Filter(null, fragSource, uniformsData);
-    this.stage.filters = [blurFilter, thresholdFilter];
-    this.stage.filterArea = this.renderer.screen;
   }
 
   resize() {
@@ -90,4 +56,4 @@ class KineticTypographyApp1 {
   }
 }
 
-export default KineticTypographyApp1;
+export default KineticTypographyApp2;
