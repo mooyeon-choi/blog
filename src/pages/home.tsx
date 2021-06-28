@@ -2,37 +2,63 @@ import React, { useEffect } from 'react';
 import IPage from '../interfaces/page';
 import logging from '../config/logging';
 import { Link } from 'react-router-dom';
-import MainCanvasApp from "../interactive/homePage/mainCanvasApp.js";
 import styled from 'styled-components';
+import Navbar from '../components/common/navbar';
 
-const MainCanvas = styled.canvas`
+interface StyledLinkProps {
+    animation?: string;
+}
+
+const HomeWrapper = styled.div`
+    margin-top: 40vh;
+    height: 3000px;
+`
+
+const BackgroundDiv = styled.div`
+    height: 90vh;
+    width: 70%;
+    margin: 50px;
+    background-color: #2B5F8C;
     position: fixed;
     top: 0;
     z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+`
+
+const BackgroundText = styled.div`
+    margin-top: 10vh;
+    font-weight: bold;
+    font-size: 15vh;
+    line-height: 12vh;
+    color: #0f0f0f;
+    width: 30%;
+`
+
+const StyledLink = styled(Link)<StyledLinkProps>`
+    text-decoration: none !important;
+    margin-left: 100px;
+    font-family: "Hind"
+    font-weight: bold;
+    font-size: 10vh;
+    line-height: 12vh;
+    color: #0f0f0f;
+    animation: animate__bounceInDown;
 `
 
 const HomePage: React.FunctionComponent<IPage> = props => {
     useEffect(() => {
         logging.info(`Loading ${props.name}`)
-        new MainCanvasApp();
-
-        return () => {
-            const mainCanvas = document.getElementById("mainCanvas");
-            mainCanvas?.remove()
-        }
     }, [props.name])
 
     return (
-        <div>
-            <div>Hello!</div>
-            <Link to="/about">About Page</Link><br/>
-            <Link to="/interactive/1001">Kinetic Typography 1</Link><br/>
-            <Link to="/interactive/1002">Kinetic Typography 2</Link><br/>
-            <Link to="/interactive/1003">Kinetic Typography 3</Link><br/>
-            <Link to="/interactive/1004">Kinetic Typography 4</Link><br/>
-            <Link to="/interactive/1006">Kinetic Typography 6</Link><br/>
-            <MainCanvas id="mainCanvas" />
-        </div>
+        <HomeWrapper>
+            <Navbar />
+            <BackgroundDiv><BackgroundText>Hi. I'm Mooyeon</BackgroundText></BackgroundDiv>
+            <StyledLink animation="bounceInDown" to="/about">About</StyledLink><br/>
+            <StyledLink to="/interactive/1001">Projects</StyledLink><br/>
+        </HomeWrapper>
     );
 }
 
