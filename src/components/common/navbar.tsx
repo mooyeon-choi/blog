@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LogoImage = styled.img`
-    margin-left: 50px;
-    height: 80%;
+const LogoImage = styled.div`
+    width: 100px;
+    height: 100px;
+    margin-left: 30px;
 `
 const NavWrapper = styled.nav`
     top: 0;
@@ -17,7 +18,7 @@ const NavWrapper = styled.nav`
 
 const Navbar = () => (
     <NavWrapper>
-        <LogoImage src="/logo.png" alt="logo"/>
+        <LogoImage className="sticker"/>
     </NavWrapper>
 )
 

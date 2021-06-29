@@ -40,10 +40,6 @@ const InteractivePage: React.FunctionComponent<IPage & RouteComponentProps<any>>
                 setCanvasApp({});
                 break;
             }
-        // return () => {
-        //     logging.info(`Cleaned up ${props.name}`)
-        //     setCanvasApp({});
-        // }
     }, [props])
 
     useEffect(() => {

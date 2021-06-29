@@ -2,3 +2,12 @@
   width: 100%;
   height: 100%;
 }
+
+.sticker .sticker-img {
+  background-image: url('./assets/logo.png');
+  background-size: contain;
+}
+
+.sticker .sticker-shadow {
+  opacity: 0.6;
+}

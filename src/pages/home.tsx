@@ -4,6 +4,7 @@ import logging from '../config/logging';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from '../components/common/navbar';
+import { LogoApp } from '../utils/stickerLogo/logoApp.js';
 
 interface StyledLinkProps {
     animation?: string;
@@ -21,7 +22,6 @@ const BackgroundDiv = styled.div`
     background-color: #2B5F8C;
     position: fixed;
     top: 0;
-    z-index: -1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -49,13 +49,14 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 
 const HomePage: React.FunctionComponent<IPage> = props => {
     useEffect(() => {
-        logging.info(`Loading ${props.name}`)
+        logging.info(`Loading ${props.name}`);
+        new LogoApp('.sticker');
     }, [props.name])
 
     return (
         <HomeWrapper>
             <Navbar />
-            <BackgroundDiv><BackgroundText>Hi. I'm Mooyeon</BackgroundText></BackgroundDiv>
+            <BackgroundText>Hi. I'm Mooyeon</BackgroundText>
             <StyledLink animation="bounceInDown" to="/about">About</StyledLink><br/>
             <StyledLink to="/interactive/1001">Projects</StyledLink><br/>
         </HomeWrapper>
