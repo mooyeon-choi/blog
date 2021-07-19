@@ -11,8 +11,10 @@ interface StyledLinkProps {
 }
 
 const HomeWrapper = styled.div`
-    margin-top: 40vh;
-    height: 3000px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #000000;
 `
 
 const BackgroundDiv = styled.div`
@@ -27,24 +29,34 @@ const BackgroundDiv = styled.div`
     align-items: flex-end;
 `
 
-const BackgroundText = styled.div`
-    margin-top: 10vh;
+const BackgroundText = styled.p`
+    margin-left: -40px;
+    overflow: hidden;
     font-weight: bold;
     font-size: 15vh;
-    line-height: 12vh;
-    color: #0f0f0f;
-    width: 30%;
+    line-height: 14vh;
+    color: #0a0a0a;
+    width: 700vh;
+    z-index: -1;
+
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 `
 
 const StyledLink = styled(Link)<StyledLinkProps>`
-    text-decoration: none !important;
-    margin-left: 100px;
-    font-family: "Hind"
+    text-decoration: none;
     font-weight: bold;
-    font-size: 10vh;
-    line-height: 12vh;
+    font-size: 15vh;
+    line-height: 1;
     color: #0f0f0f;
-    animation: animate__bounceInDown;
+
+    :hover {
+        color: #c6e2ff;
+        animation: neon .08s ease-in-out infinite alternate;
+    }
 `
 
 const HomePage: React.FunctionComponent<IPage> = props => {
@@ -55,10 +67,16 @@ const HomePage: React.FunctionComponent<IPage> = props => {
 
     return (
         <HomeWrapper>
-            <Navbar />
-            <BackgroundText>Hi. I'm Mooyeon</BackgroundText>
+            <BackgroundText>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</BackgroundText>
+            <BackgroundText>E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D</BackgroundText>
+            <BackgroundText>J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I</BackgroundText>
+            <BackgroundText>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</BackgroundText>
+            <BackgroundText>E F <StyledLink to="/interactive/1001">P R O J E C T</StyledLink> G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W</BackgroundText>
+            <BackgroundText>J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I</BackgroundText>
+            <BackgroundText>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</BackgroundText>
+            <BackgroundText>E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D</BackgroundText>
             <StyledLink animation="bounceInDown" to="/about">About</StyledLink><br/>
-            <StyledLink to="/interactive/1001">Projects</StyledLink><br/>
+            
         </HomeWrapper>
     );
 }
